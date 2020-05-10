@@ -1,3 +1,5 @@
+import sys
+
 ip = sys.argv[1]
 socket = socket.socket(socket.AF_INET , socket.SOCK_STREAM)
 socket.connect((ip , 33))
