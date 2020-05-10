@@ -1,4 +1,5 @@
 import sys
+import socket
 
 ip = sys.argv[1]
 socket = socket.socket(socket.AF_INET , socket.SOCK_STREAM)
