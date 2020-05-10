@@ -8,7 +8,7 @@ socket.connect((ip , 33))
 
 while True:
     j = raw_input("Enter: ")
-    socket.send(payload)
+    socket.send(j)
     d = socket.recv(1024)
     print(d)
     if j == "exit":
