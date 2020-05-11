@@ -139,7 +139,7 @@ jnz load_api_hash
 ret
 
 EXE:
-	db "mspaint", 0
+	db "notepad.exe", 0
 
 KERNEL32HASHTABLE:
 	dd 0x95902b19 ; ExitProcess
