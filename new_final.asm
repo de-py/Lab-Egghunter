@@ -28,7 +28,9 @@ push 0x00
 push esi
 push dword [EDX + Winexec]
 pop eax 
+mov ebx, edx ; Saving edx
 call eax
+mov edx, ebx ; restoring edx
 
 ; call exitprocess
 push 0x00 ; Error code
