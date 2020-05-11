@@ -24,7 +24,7 @@ pop ebp
 
 ; call winexec api
 lea esi, [EDX + EXE]
-push 0x00
+push 0x01
 push esi
 push dword [EDX + Winexec]
 pop eax 
