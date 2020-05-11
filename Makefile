@@ -1,4 +1,4 @@
 git:
-	git add ellis_lab03.py
+	git add *
 	git commit -m "upload"
 	git push

