@@ -7,11 +7,8 @@ geteip:
 pop edx ; EDX is now base for function
 lea edx, [edx-5] ;adjust for first instruction?
 
-mov ebp, esp
-sub esp, 1000h
-
 push edx
-mov ebx, 0x4b1ffe8e; Kernell32.dll
+mov ebx, 0x4b1ffe8e ; kernel32.dll module hash
 call get_module_address
 pop edx
 
@@ -25,42 +22,15 @@ call get_api_address
 pop edx
 pop ebp
 
+; call winexec api
+lea esi, [EDX + EXE]
+push 0x00
+push esi
+push dword [EDX + Winexec]
+pop eax 
+call eax
 
-;TODO call your api
-
-
-; Call LoadLibraryA to get user32.dll into memory
-push ebp
-push edx
-lea eax, [EDX + USER32]
-push eax
-call [EDX + LoadLibraryA]
-pop edx
-pop ebp
-
-; Build user32 API function pointer table
-push ebp
-push edx
-mov ebp, eax
-lea esi, [EDX + USER32HASHTABLE]
-lea edi, [EDX + USER32FUNCTIONSTABLE]
-call get_api_address
-pop edx
-pop ebp
-
-; call messageboxa
-; says "Egg"
-push 0x656767 ;  67 67 65 egg backwards
-mov eax, esp ; mov pointer to eax
-push 0x00 ; push utype
-push 0x00 ; push lpcaption
-push eax ; push lptext
-push 0x00 ; push hwnd
-mov ebx, edx ; trying to preseve edx
-call [EDX + MESSAGEBOXA]
-mov edx, ebx ; Moved back to be consistent
-
-; Call Exit Process
+; call exitprocess
 push 0x00 ; Error code
 call [edx + ExitProcess]
 
@@ -115,7 +85,6 @@ load_api_hash:
 push edi
 push esi
 mov esi, [esi]
-; xor ecx, ecx
 
 load_api_name:
 mov edi, [ebx]
@@ -167,25 +136,16 @@ jnz load_api_hash
 
 ret
 
+EXE:
+	db "calc.exe", 0
+
 KERNEL32HASHTABLE:
 	dd 0x95902b19 ; ExitProcess
-	dd 0xc8ac8026 ; LoadLibraryA
-	
+	dd 0xe8bf6dad ; WinExec
 	dd 0xFFFF ; make sure to end with this token
 
 KERNEL32FUNCTIONSTABLE:
 ExitProcess:
+	dd 0x00000000
+Winexec:
 	dd 0x00000001
-LoadLibraryA:
-	dd 0x00000002
-
-USER32HASHTABLE:
-	dd 0xabbc680d ; MessageBoxA
-	dd 0xFFFF
-
-USER32FUNCTIONSTABLE:
-MESSAGEBOXA:
-	dd 0x00000003
-
-USER32:
-	db "user32.dll", 0
