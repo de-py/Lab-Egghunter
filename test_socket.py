@@ -12,4 +12,3 @@ while True:
     d = socket.recv(1024)
     print(d)
     if j == "exit":
-        exit()

